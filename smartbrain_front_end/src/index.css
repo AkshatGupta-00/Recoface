@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: linear-gradient(90deg, #26c2c2 0%, #24cc15 100%);
+  background: linear-gradient(90deg, #010c0c 0%, #0004f0 100%);
 }
 
 button {

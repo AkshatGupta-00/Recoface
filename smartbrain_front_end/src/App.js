@@ -7,7 +7,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Signin from './components/Signin/Signin';
-import Register from './components/Register/Register'
+import Register from './components/Register/Register';
 import './App.css';
 
 const app = new Clarifai.App({
@@ -17,10 +17,10 @@ const app = new Clarifai.App({
 const particleOptions = {
   particles: {
     number: {
-      value: 100,
+      value: 219,
       density: {
         enable: true,
-        value_area: 1000
+        value_area: 10000
       }
     },
     line_linked: {
@@ -33,23 +33,25 @@ const particleOptions = {
   }
 }
 
+const initialState = {
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
+
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -102,6 +104,7 @@ onButtonSubmit = () => {
           .then(count => {
             this.setState(Object.assign(this.state.user, { entries: count}))
           })
+          .catch(console.log)
 
       }
       this.displayFaceBox(this.faceLocation(response))
@@ -111,7 +114,7 @@ onButtonSubmit = () => {
 
 onRouteChange = (route) => {
   if (route === 'signout') {
-    this.setState({isSignedIn: false})
+    this.setState(initialState)
   } else if (route === 'home') {
     this.setState({isSignedIn: true})
   }  
