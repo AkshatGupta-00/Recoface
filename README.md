@@ -1,3 +1,3 @@
 # Smart-Brain
-Face Recognition website
+Face Recognition website:
 https://recoface0.herokuapp.com/
